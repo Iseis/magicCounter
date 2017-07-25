@@ -1,9 +1,23 @@
 <resources>
     <string name="app_name">Life Linker</string>
 
+    <!-- Names -->
+    <string name="player_one">James</string>
+    <string name="player_two">John</string>
+    <string name="player_three">Barry</string>
+    <string name="player_four">Taco</string>
+
+    <!-- Life Count -->
+    <string name="life_count">20</string>
+
+    <!-- Content Descriptions -->
+    <string name="up_button">Up button</string>
+    <string name="down_button">Down button</string>
+
     <!-- Options Menu -->
     <string name="bluetooth_opt">Bluetooth Linker</string>
     <string name="bluetooth_discovery">Discover Device</string>
+
     <!--  DeviceListActivity -->
     <string name="scanning">scanning for devices...</string>
     <string name="select_device">select a device to connect</string>
