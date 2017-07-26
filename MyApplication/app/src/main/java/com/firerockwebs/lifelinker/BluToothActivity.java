@@ -27,6 +27,7 @@ public class BluToothActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blu_tooth);
+        getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         // If no bluetooth on the device inform the user and go back to the single phone activity

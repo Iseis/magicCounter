@@ -40,6 +40,7 @@ public class DeviceListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_list);
+        getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         mBtAdapter = BluetoothAdapter.getDefaultAdapter();
         mBluetoothEnabled = false;
