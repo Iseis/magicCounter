@@ -1,13 +1,19 @@
 package com.firerockwebs.lifelinker;
 
+import android.content.Context;
 import android.content.Intent;
+import android.hardware.input.InputManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 public class MainActivity extends AppCompatActivity {
+    private final String TAG = "lifelinker.MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,5 +43,19 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return false;
         }
+    }
+
+    public void plusClicked(View view) {
+        String playerLife = (String) view.getTag();
+        Log.i(TAG, playerLife);
+    }
+
+    public void minusClicked(View view) {
+        String playerLife = (String) view.getTag();
+        Log.i(TAG, playerLife);
+    }
+
+    public void changeName(View view) {
+
     }
 }

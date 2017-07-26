@@ -27,14 +27,17 @@
                 android:layout_height="wrap_content"
                 android:text="@string/player_one"
                 android:textSize="30sp"
-                android:paddingBottom="20dp" />
+                android:paddingBottom="20dp"
+                android:onClick="changeName" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/player_one_up"
-                android:background="@drawable/plus"
-                android:contentDescription="@string/up_button"/>
+                android:background="@drawable/plus_img"
+                android:contentDescription="@string/up_button"
+                android:tag="player_one_life"
+                android:onClick="plusClicked"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -48,8 +51,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/player_one_down"
-                android:background="@drawable/minus"
-                android:contentDescription="@string/down_button"/>
+                android:background="@drawable/minus_img"
+                android:contentDescription="@string/down_button"
+                android:tag="player_one_life"
+                android:onClick="minusClicked"/>
         </LinearLayout>
 
         <LinearLayout
@@ -57,24 +62,24 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/player_two"
-            android:layout_toEndOf="@+id/player_one" >
+            android:id="@+id/player_two" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/player_two"
                 android:textSize="30sp"
-                android:paddingBottom="20dp" />
+                android:paddingBottom="20dp"
+                android:onClick="changeName"/>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/player_two_up"
-                android:background="@drawable/plus"
-                android:contentDescription="@string/up_button"/>
+                android:background="@drawable/plus_img"
+                android:contentDescription="@string/up_button"
+                android:tag="player_two_life"
+                android:onClick="plusClicked"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -88,8 +93,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/player_two_down"
-                android:background="@drawable/minus"
-                android:contentDescription="@string/down_button"/>
+                android:background="@drawable/minus_img"
+                android:contentDescription="@string/down_button"
+                android:tag="player_two_life"
+                android:onClick="minusClicked"/>
         </LinearLayout>
 
     </LinearLayout>
