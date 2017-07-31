@@ -1,9 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darker_grey"
     tools:context="com.firerockwebs.lifelinker.BluToothActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/player"
+        android:layout_centerInParent="true"
+        android:gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/player_one"
+            android:textColor="@android:color/white"
+            android:textSize="40sp"
+            android:id="@+id/player_name" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/lrgplus_img"
+            android:id="@+id/player_plus"
+            android:contentDescription="@string/up_button"
+            android:padding="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:text="@string/life_count"
+            android:textColor="@android:color/white"
+            android:id="@+id/player_life" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/player_minus"
+            android:src="@drawable/lrgminus_img"
+            android:contentDescription="@string/down_button"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:orientation="vertical"
+        android:layout_marginEnd="40sp"
+        android:layout_alignParentTop="true"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/opponent_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="@string/opponent"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/opponent_life"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:text="@string/life_count"
+            android:textSize="25sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

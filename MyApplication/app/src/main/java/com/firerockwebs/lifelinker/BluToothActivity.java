@@ -32,7 +32,7 @@ public class BluToothActivity extends AppCompatActivity {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         // If no bluetooth on the device inform the user and go back to the single phone activity
         if (mBluetoothAdapter == null) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Bluetooth Alert")
                     .setMessage("No Bluetooth on this device")
                     .setIcon(android.R.drawable.stat_sys_data_bluetooth)

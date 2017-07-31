@@ -1,16 +1,21 @@
 package com.firerockwebs.lifelinker;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.hardware.input.InputManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "lifelinker.MainActivity";
@@ -56,6 +61,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeName(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Change your name");
+        final TextView textView = (TextView) view;
+        // Set up the input
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
 
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String text = input.getText().toString();
+                if (!text.equals("")) {
+                    textView.setText(text);
+                }
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        builder.show();
     }
 }
