@@ -28,7 +28,6 @@ public class DeviceListActivity extends AppCompatActivity {
 
     // Return Intent extra
     public static String EXTRA_DEVICE_ADDRESS = "device_address";
-    private final int REQUEST_BLUETOOTH_ON = 1;
 
     // Member fields
     private BluetoothAdapter mBtAdapter;
@@ -106,16 +105,7 @@ public class DeviceListActivity extends AppCompatActivity {
 
     private void doDiscovery() {
         if (D) Log.d(TAG, "doDiscovery()");
-        // If bluetooth is off request to turn it on
-        if (!mBtAdapter.isEnabled()) {
-            Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-            discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
-            startActivityForResult(discoverableIntent, REQUEST_BLUETOOTH_ON);
-        } else {
-            mBluetoothEnabled = true;
-        }
 
-        if (mBluetoothEnabled) {
             setTitle(R.string.scanning);
 
             // Turn on sub-title for new devices
@@ -128,22 +118,6 @@ public class DeviceListActivity extends AppCompatActivity {
 
             // Request discovery from BluetoothAdapter
             mBtAdapter.startDiscovery();
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        switch (requestCode) {
-            case REQUEST_BLUETOOTH_ON:
-                if (resultCode == RESULT_OK) {
-                    mBluetoothEnabled = true;
-                } else {
-                    mBluetoothEnabled = false;
-                }
-                break;
-        }
     }
 
     // The on-click listener for all devices in the ListViews

@@ -34,4 +34,7 @@
     <string name="cancel">Cancel</string>
     <string name="name_dialog">Enter Your Name</string>
 
+    <!-- Toasts -->
+    <string name="not_connected">Not connected to a device</string>
+
 </resources>
