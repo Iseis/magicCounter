@@ -72,12 +72,35 @@ public class BluToothActivity extends AppCompatActivity {
                         }
                     })
                     .show();
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // If BT is not on, request that it be enabled.
+        // setupChat() will then be called during onActivityResult
+        if (!mBluetoothAdapter.isEnabled()) {
+            Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+            discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
+            startActivityForResult(discoverableIntent, REQUEST_BLUETOOTH_ON);
+            // Otherwise, setup the chat session
         } else {
-            // If bluetooth is off request to turn it on
-            if (!mBluetoothAdapter.isEnabled()) {
-                Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-                discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
-                startActivityForResult(discoverableIntent, REQUEST_BLUETOOTH_ON);
+            if (mChatService == null) setupChat();
+        }
+    }
+
+    @Override
+    public synchronized void onResume() {
+        super.onResume();
+        // Performing this check in onResume() covers the case in which BT was
+        // not enabled during onStart(), so we were paused to enable it...
+        // onResume() will be called when ACTION_REQUEST_ENABLE activity returns.
+        if (mChatService != null) {
+            // Only if the state is STATE_NONE, do we know that we haven't started already
+            if (mChatService.getState() == BluetoothHelper.STATE_NONE) {
+                // Start the Bluetooth chat services
+                mChatService.start();
             }
         }
     }
@@ -88,6 +111,7 @@ public class BluToothActivity extends AppCompatActivity {
 
         // Initialize the compose field with a listener for the return key
         mYourLife = (TextView) findViewById(R.id.player_life);
+        mLifeDown = (ImageView) findViewById(R.id.player_minus);
 
         // Initialize the send button with a listener that for click events
         mLifeUp = (ImageView) findViewById(R.id.player_plus);
@@ -95,8 +119,9 @@ public class BluToothActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int life = Integer.parseInt(mYourLife.getText().toString());
+                Log.i(TAG, "" + life);
                 life += 1;
-                mYourLife.setText(life);
+                mYourLife.setText(Integer.toString(life));
                 String message = mYourLife.getText().toString();
                 sendMessage(message);
             }
@@ -107,7 +132,7 @@ public class BluToothActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int life = Integer.parseInt(mYourLife.getText().toString());
                 life -= 1;
-                mYourLife.setText(life);
+                mYourLife.setText(Integer.toString(life));
                 String message = mYourLife.getText().toString();
                 sendMessage(message);
             }
@@ -209,6 +234,7 @@ public class BluToothActivity extends AppCompatActivity {
                     // Get the bluetoothdevice object
                     BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(address);
                     // Attempt to connect to the device
+                    mChatService.connect(device);
                     Log.i(TAG, address);
                 }
                 break;
