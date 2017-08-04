@@ -10,6 +10,7 @@
 
     <!-- Life Count -->
     <string name="life_count">20</string>
+    <string name="giant_count">30</string>
 
     <!-- Content Descriptions -->
     <string name="up_button">Up button</string>
@@ -18,6 +19,11 @@
     <!-- Options Menu -->
     <string name="bluetooth_opt">Bluetooth Linker</string>
     <string name="bluetooth_discovery">Discover Device</string>
+    <string name="new_game">New Game</string>
+    <string name="three_players">Three Players</string>
+    <string name="two_players">Two Players</string>
+    <string name="two_headed_giant">Two Headed Giant</string>
+    <string name="four_players">Four Players</string>
 
     <!--  DeviceListActivity -->
     <string name="scanning">scanning for devices...</string>

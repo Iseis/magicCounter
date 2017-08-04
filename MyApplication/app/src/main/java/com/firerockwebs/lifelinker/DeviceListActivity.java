@@ -150,6 +150,7 @@ public class DeviceListActivity extends AppCompatActivity {
                 // If it's already paired, skip it, because it's been listed already
                 if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
                     mNewDevicesAdapter.add(device.getName() + "\n" + device.getAddress());
+                    mNewDevicesAdapter.notifyDataSetChanged();
                 }
                 // When discovery is finished, change the Activity title
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {

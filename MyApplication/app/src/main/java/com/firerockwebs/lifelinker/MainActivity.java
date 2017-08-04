@@ -1,20 +1,17 @@
 package com.firerockwebs.lifelinker;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.hardware.input.InputManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,6 +42,40 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, BluToothActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.new_game:
+                LinearLayout layout = (LinearLayout) findViewById(R.id.player_container);
+                int childCount = layout.getChildCount();
+                for (int i = 0; i < childCount; i++) {
+                    LinearLayout view = (LinearLayout) layout.getChildAt(i);
+                    int newChildCount = view.getChildCount();
+                    for (int j = 0; j < newChildCount; j++) {
+                        View childsView = view.getChildAt(j);
+                        if (childsView.getTag() != null && childsView.getTag().equals("life")) {
+                            TextView textView = (TextView) childsView;
+                            textView.setText(getResources().getString(R.string.life_count));
+                        }
+                    }
+                }
+                return true;
+            case R.id.three_players:
+                setContentView(R.layout.three_player_layout);
+                return true;
+            case R.id.two_players:
+                setContentView(R.layout.activity_main);
+                return true;
+            case R.id.two_headed_giant:
+                int currentID = getWindow().getDecorView().getId();
+                if (currentID != R.layout.activity_main)
+                    setContentView(R.layout.activity_main);
+
+                TextView life = (TextView) findViewById(R.id.player_one_life);
+                life.setText(getResources().getString(R.string.giant_count));
+                life = (TextView) findViewById(R.id.player_two_life);
+                life.setText(getResources().getString(R.string.giant_count));
+                return true;
+            case R.id.four_players:
+                setContentView(R.layout.four_player_layout);
+                return true;
             default:
                 return false;
         }
@@ -52,12 +83,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void plusClicked(View view) {
         String playerLife = (String) view.getTag();
-        Log.i(TAG, playerLife);
+        int id = getResources().getIdentifier(playerLife, "id", this.getPackageName());
+        TextView life = (TextView) findViewById(id);
+
+        int lifeInt = Integer.parseInt(life.getText().toString());
+        lifeInt += 1;
+        life.setText(Integer.toString(lifeInt));
     }
 
     public void minusClicked(View view) {
         String playerLife = (String) view.getTag();
-        Log.i(TAG, playerLife);
+        int id = getResources().getIdentifier(playerLife, "id", this.getPackageName());
+        TextView life = (TextView) findViewById(id);
+        int lifeInt = Integer.parseInt(life.getText().toString());
+        lifeInt -= 1;
+        life.setText(Integer.toString(lifeInt));
     }
 
     public void changeName(View view) {

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/player_container"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:id="@+id/player_one"
+            android:layout_marginEnd="60sp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/player_one"
+                android:textSize="30sp"
+                android:paddingBottom="20dp"
+                android:onClick="changeName" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_one_up"
+                android:background="@drawable/plus_img"
+                android:contentDescription="@string/up_button"
+                android:tag="player_one_life"
+                android:onClick="plusClicked"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_one_life"
+                android:text="@string/life_count"
+                android:textSize="40sp"
+                android:padding="10dp"
+                android:tag="life"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_one_down"
+                android:background="@drawable/minus_img"
+                android:contentDescription="@string/down_button"
+                android:tag="player_one_life"
+                android:onClick="minusClicked"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:id="@+id/player_two"
+            android:layout_marginEnd="60sp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/player_one"
+                android:textSize="30sp"
+                android:paddingBottom="20dp"
+                android:onClick="changeName" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_two_up"
+                android:background="@drawable/plus_img"
+                android:contentDescription="@string/up_button"
+                android:tag="player_two_life"
+                android:onClick="plusClicked"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_two_life"
+                android:text="@string/life_count"
+                android:textSize="40sp"
+                android:padding="10dp"
+                android:tag="life"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_two_down"
+                android:background="@drawable/minus_img"
+                android:contentDescription="@string/down_button"
+                android:tag="player_two_life"
+                android:onClick="minusClicked"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:id="@+id/player_three"
+            android:layout_marginEnd="60sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/player_three"
+                android:textSize="30sp"
+                android:paddingBottom="20dp"
+                android:onClick="changeName"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_three_up"
+                android:background="@drawable/plus_img"
+                android:contentDescription="@string/up_button"
+                android:tag="player_three_life"
+                android:onClick="plusClicked"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_three_life"
+                android:text="@string/life_count"
+                android:textSize="40sp"
+                android:padding="10dp"
+                android:tag="life"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_three_down"
+                android:background="@drawable/minus_img"
+                android:contentDescription="@string/down_button"
+                android:tag="player_three_life"
+                android:onClick="minusClicked"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:id="@+id/player_four" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/player_four"
+                android:textSize="30sp"
+                android:paddingBottom="20dp"
+                android:onClick="changeName"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_four_up"
+                android:background="@drawable/plus_img"
+                android:contentDescription="@string/up_button"
+                android:tag="player_four_life"
+                android:onClick="plusClicked"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_four_life"
+                android:text="@string/life_count"
+                android:textSize="40sp"
+                android:padding="10dp"
+                android:tag="life"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_four_down"
+                android:background="@drawable/minus_img"
+                android:contentDescription="@string/down_button"
+                android:tag="player_four_life"
+                android:onClick="minusClicked"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
