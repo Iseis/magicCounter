@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darker_grey"
+    android:background="@drawable/btbackground"
     tools:context="com.firerockwebs.lifelinker.BluToothActivity">
 
     <LinearLayout
@@ -21,7 +21,8 @@
             android:text="@string/player_one"
             android:textColor="@android:color/white"
             android:textSize="40sp"
-            android:id="@+id/player_name" />
+            android:id="@+id/player_name"
+            android:onClick="changeName"/>
 
         <ImageView
             android:layout_width="wrap_content"

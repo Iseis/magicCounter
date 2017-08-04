@@ -2,25 +2,70 @@ package com.firerockwebs.lifelinker;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Point;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "lifelinker.MainActivity";
+    ActionBar mActionBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //mActionBar = getSupportActionBar();
+        //mActionBar.hide();
+
+
+        //RelativeLayout layout = (RelativeLayout) findViewById(R.id.top_view);
+
+        /*layout.setOnTouchListener(new View.OnTouchListener() {
+            float x1, x2;
+            float y1, y2;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        x1 = event.getRawX();
+                        y1 = event.getRawY();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        x2 = event.getRawX();
+                        y2 = event.getRawY();
+                        // if UP to Down sweep event on screen
+                        if (y1 < y2)
+                        {
+                            mActionBar.show();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                return false;
+            }
+        });*/
     }
 
     @Override
@@ -89,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
         int lifeInt = Integer.parseInt(life.getText().toString());
         lifeInt += 1;
         life.setText(Integer.toString(lifeInt));
+        //mActionBar.hide();
     }
 
     public void minusClicked(View view) {
@@ -98,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         int lifeInt = Integer.parseInt(life.getText().toString());
         lifeInt -= 1;
         life.setText(Integer.toString(lifeInt));
+        //mActionBar.hide();
     }
 
     public void changeName(View view) {
